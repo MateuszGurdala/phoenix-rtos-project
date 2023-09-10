@@ -1,12 +1,12 @@
 [submodule "phoenix-rtos-kernel"]
 	path = phoenix-rtos-kernel
-	url = https://github.com/phoenix-rtos/phoenix-rtos-kernel.git
+	url = https://github.com/MateuszGurdala/phoenix-rtos-kernel.git
 [submodule "libphoenix"]
 	path = libphoenix
-	url = https://github.com/phoenix-rtos/libphoenix
+	url = https://github.com/MateuszGurdala/libphoenix.git
 [submodule "phoenix-rtos-build"]
 	path = phoenix-rtos-build
-	url = https://github.com/phoenix-rtos/phoenix-rtos-build
+	url = https://github.com/MateuszGurdala/phoenix-rtos-build.git
 [submodule "phoenix-rtos-ports"]
 	path = phoenix-rtos-ports
 	url = https://github.com/phoenix-rtos/phoenix-rtos-ports
@@ -49,3 +49,6 @@
 [submodule "phoenix-rtos-doc"]
 	path = phoenix-rtos-doc
 	url = https://github.com/phoenix-rtos/phoenix-rtos-doc
+[submodule "phoenix-rtos-monitor"]
+	path = phoenix-rtos-monitor
+	url = https://github.com/MateuszGurdala/phoenix-rtos-monitor.git

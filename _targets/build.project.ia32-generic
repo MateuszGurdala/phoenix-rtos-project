@@ -18,28 +18,26 @@ export BUSYBOX_CONFIG=$(realpath "busybox_config")
 export DROPBEAR_CUSTOM_CFLAGS="-DLTC_NO_BSWAP"
 export PSH_DEFUSRPWDHASH="0B1ANiYi45IhxkfmUW155/GBd4IRE="
 
-
 #
 # Ports configuration
 #
 export PORTS_BUSYBOX=y
-export PORTS_PCRE=y
-export PORTS_OPENSSL=y
-export PORTS_LIGHTTPD=y
+export PORTS_PCRE=n
+export PORTS_OPENSSL=n
+export PORTS_LIGHTTPD=n
 export PORTS_DROPBEAR=y
 export PORTS_LUA=n
-export PORTS_LZO=y
-export PORTS_OPENVPN=y
-export PORTS_JANSSON=y
-export PORTS_CURL=y
-export PORTS_MICROPYTHON=y
+export PORTS_LZO=n
+export PORTS_OPENVPN=n
+export PORTS_JANSSON=n
+export PORTS_CURL=n
+export PORTS_MICROPYTHON=n
 
 #
 # Platform dependent parameters
 #
 SIZE_PAGE=$((0x1000))
 PAGE_MASK=$((~(SIZE_PAGE - 1)))
-
 
 #
 # Project specific build
@@ -68,7 +66,6 @@ else
 	CONSOLE_APP="pc-tty"
 fi
 
-
 # Obligatory applications to run Phoenix-RTOS
 USER_SCRIPT=(
 	"wait 1000"
@@ -79,12 +76,10 @@ USER_SCRIPT=(
 	"go!"
 )
 
-
 b_build_project() {
 	b_log "Building user applications"
 	make -C "_user" all install
 }
-
 
 b_build_target() {
 	b_log "Building $TARGET project"
@@ -101,15 +96,13 @@ b_build_target() {
 	make -C plo base
 }
 
-
 b_le32hex() {
 	local n=$1
-	for ((i=0; i<4; i++)); do
+	for ((i = 0; i < 4; i++)); do
 		printf "%s%02x" "\x" $((n & 0xff))
 		n=$((n >> 8))
 	done
 }
-
 
 b_image_target() {
 	b_log "Creating image from $PREFIX_ROOTFS"
@@ -129,7 +122,7 @@ b_image_target() {
 		printf $(b_le32hex $((0x83)))
 		printf $(b_le32hex $((OFFS_ROOTFS)))
 		printf $(b_le32hex $((2 * SIZE_ROOTFS)))
-	} > "$PTABLE"
+	} >"$PTABLE"
 
 	# Build production image (sets $PHOENIX_DISK variable)
 	b_mkscript_user "${USER_SCRIPT[@]}"
@@ -144,14 +137,11 @@ b_image_target() {
 	dd if="$ROOTFS" of="$PHOENIX_DISK" bs=512 seek="$OFFS_ROOTFS" conv=notrunc 2>/dev/null
 }
 
-
 b_test_target() {
 	b_log "Build and install tests in the phoenix-rtos filesystem"
 	make -C "phoenix-rtos-tests" all install
 }
 
-
 b_update_pkg() { :; }
-
 
 export -f b_build_target

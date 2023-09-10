@@ -1,4 +1,7 @@
 :{}:
 X /bin/posixsrv
 X /sbin/lwip rtl:0x18:11
+X /usr/bin/start_telnet
+X /bin/monitorsrv
+X /usr/sbin/dropbear -R -p 24
 X /bin/psh
