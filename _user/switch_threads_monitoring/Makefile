@@ -6,7 +6,7 @@
 # Part of B.Sc Thesis
 #
 
-NAME := enable_threads_monitoring
+NAME := switch_threads_monitoring
 LOCAL_SRCS := main.c
 
 include $(binary.mk)
