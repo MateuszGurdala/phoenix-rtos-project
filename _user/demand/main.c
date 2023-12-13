@@ -9,7 +9,9 @@
 int main(int argc, char **argv)
 {
 	char cport;
-	int fildes, port;
+	int fildes;
+	int port;
+
 	msg_t msg = {
 		.type = mtRead,
 		.i.data = NULL,
@@ -19,7 +21,6 @@ int main(int argc, char **argv)
 	};
 
 	if (argc != 2) {
-
 		printf("ERROR: ARGUMENTS\n");
 		printf("demand FILENAME.od\n");
 		return 1;
