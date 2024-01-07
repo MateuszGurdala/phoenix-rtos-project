@@ -4,3 +4,5 @@ _build/*
 _boot/*
 .DS_Store
 .vscode/*
+.idea/*
+cmake-build-debug/*
